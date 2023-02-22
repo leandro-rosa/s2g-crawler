@@ -57,7 +57,7 @@ const addProduct = (uri) => {
                 images.push($(this).attr('src'))
             })
 
-            products.push({name, category, price, sku, brand, images})
+            products.push({name, category, price, sku, brand, images: images.join("\n")})
             done();
         }
     });
