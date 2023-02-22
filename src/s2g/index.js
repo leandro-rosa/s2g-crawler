@@ -14,6 +14,7 @@ const csvWriter = createCsvWriter({
         {id: 'sku', title: 'SKU'},
         {id: 'brand', title: 'Brand'},
         {id: 'images', title: 'images'},
+        {id: 'option_id', title: 'Option ID'},
     ]
 });
 
@@ -50,8 +51,11 @@ const addProduct = (uri) => {
             const price = $('.price-info .price').text()
             const sku = $('.new-sku-style').text()
             const brand = $('.product-brand a').first().text().trim()
+
+            let option_id = 1
             $('.product-image-gallery .gallery-image').each(function() {
-                products.push({name, category, price, sku, brand, images: $(this).attr('src')})
+                products.push({name, category, price, sku, brand, images: $(this).attr('src'), option_id})
+                option_id++
             })
 
             done();

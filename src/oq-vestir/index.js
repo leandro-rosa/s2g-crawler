@@ -14,6 +14,7 @@ const csvWriter = createCsvWriter({
         {id: 'sku', title: 'SKU'},
         {id: 'brand', title: 'Brand'},
         {id: 'images', title: 'images'},
+        {id: 'option_id', title: 'Option ID'},
     ]
 });
 
@@ -29,7 +30,6 @@ const execute = () => {
         .on('end', async () => {
            await new Promise(r => setTimeout(r, 25000));
 
-            console.log(products)
 
             csvWriter
                 .writeRecords(products)
@@ -52,8 +52,10 @@ const addProduct = (uri) => {
             const price = $('.productPrice .price').text().trim()
             const sku = $('.product--sku').text().trim()
             const brand = $('.produt-title--brand').first().text().trim()
+            let option_id = 1
             $('.img-zoom').each(function() {
-                products.push({name, category, price, sku, brand, images: $(this).attr('src')})
+                products.push({name, category, price, sku, brand, images: $(this).attr('src'), option_id })
+                option_id++
             })
 
             done();
