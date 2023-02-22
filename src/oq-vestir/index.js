@@ -52,12 +52,10 @@ const addProduct = (uri) => {
             const price = $('.productPrice .price').text().trim()
             const sku = $('.product--sku').text().trim()
             const brand = $('.produt-title--brand').first().text().trim()
-            const images = []
             $('.img-zoom').each(function() {
-                images.push($(this).attr('src'))
+                products.push({name, category, price, sku, brand, images: $(this).attr('src')})
             })
 
-            products.push({name, category, price, sku, brand, images: images.join("\n")})
             done();
         }
     });
