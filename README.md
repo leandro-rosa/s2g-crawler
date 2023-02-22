@@ -1,0 +1,3 @@
+- Alterar o arquivo craweler.csv com os links das PDP's 
+- executar no terminal o comando "yarn \<parceiro\>" por exemplo:
+  - yarn s2g

@@ -10,9 +10,10 @@
     "csv-writer": "^1.6.0"
   },
   "devDependencies": {
+    "node-ts": "^5.1.2",
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "s2g": "node_modules/.bin/nodemon src/s2g/index.js"
+    "s2g": "nodemon src/s2g/index.js"
   }
 }
