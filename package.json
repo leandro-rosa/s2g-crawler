@@ -14,6 +14,7 @@
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "s2g": "nodemon src/s2g/index.js"
+    "s2g": "nodemon src/s2g/index.js",
+    "oq-vestir": "nodemon src/oq-vestir/index.js"
   }
 }

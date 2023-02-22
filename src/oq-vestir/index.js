@@ -5,7 +5,7 @@ const { parse } = require("csv-parse");
 const {createObjectCsvWriter: createCsvWriter} = require("csv-writer");
 
 const csvWriter = createCsvWriter({
-    path: __dirname + '/s2g.csv',
+    path: __dirname + '/oq-vestir.csv',
 
     header: [
         {id: 'name', title: 'Name'},
@@ -29,6 +29,8 @@ const execute = () => {
         .on('end', async () => {
            await new Promise(r => setTimeout(r, 25000));
 
+            console.log(products)
+
             csvWriter
                 .writeRecords(products)
                 .then(()=> console.log('The CSV file was written successfully'));
@@ -45,20 +47,17 @@ const addProduct = (uri) => {
                 return
             }
             const $ = res.$;
-            const name = $('.product-name .h1').text()
-            const category = $('.breadcrumbs .product strong').text()
-            const price = $('.price-info .price').text()
-            const sku = $('.new-sku-style').text()
-            const brand = $('.product-brand a').first().text().trim()
+            const name = $('.produt-title--name').text().trim()
+            const category = $('.breadcrumb-wrapper .product').text().trim()
+            const price = $('.productPrice .price').text().trim()
+            const sku = $('.product--sku').text().trim()
+            const brand = $('.produt-title--brand').first().text().trim()
             const images = []
-            $('.product-image-gallery .gallery-image').each(function() {
+            $('.img-zoom').each(function() {
                 images.push($(this).attr('src'))
             })
 
-
-            products.push({name, category, price, sku, brand, images: images.join("\n")})
-            console.log(products)
-
+            products.push({name, category, price, sku, brand, images})
             done();
         }
     });
