@@ -1,7 +1,7 @@
 {
   "name": "s2g-crawler",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/s2g/index.js",
   "author": "Leandro Rosa",
   "license": "MIT",
   "dependencies": {
@@ -13,6 +13,6 @@
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "start": "nodemon index.js"
+    "s2g": "node_modules/.bin/nodemon src/s2g/index.js"
   }
 }

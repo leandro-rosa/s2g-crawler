@@ -5,7 +5,7 @@ const { parse } = require("csv-parse");
 const {createObjectCsvWriter: createCsvWriter} = require("csv-writer");
 
 const execute = () => {
-    fs.createReadStream("./crawler.csv")
+    fs.createReadStream(__dirname + "/crawler.csv")
         .pipe(parse({ delimiter: ",", from_line: 2 }))
         .on("data", function (row) {
             addProduct(row)
@@ -34,7 +34,7 @@ const addProduct = (uri) => {
             })
 
             const csvWriter = createCsvWriter({
-                path: 's2g.csv',
+                path: __dirname + '/s2g.csv',
                 header: [
                     {id: 'name', title: 'Name'},
                     {id: 'category', title: 'Category'},
